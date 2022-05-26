@@ -17,15 +17,18 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link text-white " href="./pages/tables.html">
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {{ request()->segment(2) == 'templates' ? 'active bg-gradient-primary' : '' }}" href="{{ route('templates.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">table_view</i>
+                        {{-- <i class="material-icons opacity-10">template</i> --}}
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Template</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link text-white " href="./pages/billing.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">receipt_long</i>
@@ -56,10 +59,8 @@
                     </div>
                     <span class="nav-link-text ms-1">Notifications</span>
                 </a>
-            </li> -->
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-            </li>
+            </li> --> 
+            
             <li class="nav-item">
                 <a class="nav-link text-white {{ request()->segment(2) == 'users' ? 'active bg-gradient-primary' : '' }}" href="{{ route('users.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

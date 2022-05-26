@@ -49,9 +49,12 @@ Route::group([
 ], function () {
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
-
     Route::resource('users', 'UserController');
-
+    Route::resource('templates', 'TemplateController');
+    Route::post('templates/deleteByAjax', 'TemplateController@deleteByAjax');
+    //Route::get('/templates', 'TemplateController');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('backend/templates/delete/{id}','TemplateController@delete');
+//Route::post('backend/templates/delete', 'App\Http\Controllers\TemplateController@deleteByAjax');
+//Route::post('/backend/template/delete', 'App\Http\Controllers\TemplateController@delete');
