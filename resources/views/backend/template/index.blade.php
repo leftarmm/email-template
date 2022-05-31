@@ -10,7 +10,7 @@
     <div class="card-header pb-0">
         <div class="row">
             <div class="col-lg-6 col-7">
-                <h6>Template</h6>
+                <h3>Template</h3>
             </div>
             {{-- <div class="col-lg-6 col-5 my-auto text-end">
                 <a href="{{ route('users.create') }}" class="btn btn-sm btn-info">Add</a> --}}
@@ -26,7 +26,7 @@
                 </div> -->
             {{-- </div> --}}
         </div>
-            <div class="col-lg-6 col-5 my-auto text-end">
+            <div class="cmy-auto text-end">
                 <a href="{{ route('templates.create') }}" class="btn btn-sm btn-info">Add</a>
         </div>
         <div class="card-body">
