@@ -52,6 +52,7 @@ Route::group([
     Route::resource('admins', 'AdminController');
     Route::resource('users', 'UserController');
     Route::post('admins/deleteByAjax', 'AdminController@deleteByAjax');
-
+    Route::resource('templates', 'TemplateController');
+    Route::post('templates/deleteByAjax', 'TemplateController@deleteByAjax');
 });
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
