@@ -30,7 +30,6 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>password</th>
                         <th>action</th>
                     </tr>
                 </thead>
@@ -40,7 +39,6 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{ $item->password }}</td>
                         <td>
                     <a class="btn btn-sm btn-warning" href="{{ route('admins.edit', ['admin' => $item ]) }}">
                         Edit
