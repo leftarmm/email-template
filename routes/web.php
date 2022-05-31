@@ -49,9 +49,9 @@ Route::group([
 ], function () {
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
-
+    Route::resource('admins', 'AdminController');
     Route::resource('users', 'UserController');
+    Route::post('admins/deleteByAjax', 'AdminController@deleteByAjax');
 
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
