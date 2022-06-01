@@ -18,32 +18,29 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Setting pages</h6>
             </li>
-              <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link text-white {{ request()->segment(2) == 'templates' ? 'active bg-gradient-primary' : '' }}" href="{{ route('templates.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="material-icons opacity-10">template</i> --}}
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
                     </div>
                     <span class="nav-link-text ms-1">Template</span>
                 </a>
             </li>
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-            </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->segment(2) == 'users' ? 'active bg-gradient-primary' : '' }}" href="{{ route('admins.index') }}">
+                <a class="nav-link text-white {{ request()->segment(2) == 'admins' ? 'active bg-gradient-primary' : '' }}" href="{{ route('admins.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">person</i>
+                        <i class="material-icons opacity-10">person</i>
                     </div>
                     <span class="nav-link-text ms-1">Admin</span>
                 </a>
 
-            
+
             <li class="nav-item">
                 <a class="nav-link text-white {{ request()->segment(2) == 'users' ? 'active bg-gradient-primary' : '' }}" href="{{ route('users.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">person</i>
+                        <i class="fa fa-users"></i>
                     </div>
                     <span class="nav-link-text ms-1">User</span>
                 </a>

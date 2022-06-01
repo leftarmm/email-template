@@ -16,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index', [
+        return view('backend.admin.index', [
             'admins' => Admin::all()
         ]);
     }
@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.form');
+        return view('backend.admin.form');
     }
 
     /**
@@ -83,7 +83,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('admin.form',[
+        return view('backend.admin.form',[
             'admin'=>$admin
         ]);
 
