@@ -43,7 +43,7 @@ class AdminController extends Controller
             $admin = Admin::find($request->id);
             $admin->name = $request->name;
             $admin->email = $request->email;
-            $admin->password = Crypt::encryptString("abcd1234");;
+            $admin->password = encrypt($request->password);;
             $admin->update();
             $notification = array(
                 'message' => 'The data was updated successfully.',
@@ -53,7 +53,7 @@ class AdminController extends Controller
             $admin = new Admin();
             $admin->name = $request->name;
             $admin->email = $request->email;
-            $admin->password = Crypt::encryptString("abcd1234");
+            $admin->password = encrypt($request->password);
             $admin->save();
 
             //dd($user->id);
@@ -83,8 +83,9 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
+        $admin->password = decrypt($admin->password);
         return view('backend.admin.form',[
-            'admin'=>$admin
+            'admin'=> $admin
         ]);
 
     }
