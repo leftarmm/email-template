@@ -54,5 +54,7 @@ Route::group([
     Route::post('admins/deleteByAjax', 'AdminController@deleteByAjax');
     Route::resource('templates', 'TemplateController');
     Route::post('templates/deleteByAjax', 'TemplateController@deleteByAjax');
+    Route::resource('hosts', 'HostController');
+    Route::post('hosts/deleteByAjax', 'HostController@deleteByAjax');
 });
 

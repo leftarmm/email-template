@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->segment(2) == 'hosts' ? 'active bg-gradient-primary' : '' }}" href="#">
+                <a class="nav-link text-white {{ request()->segment(2) == 'hosts' ? 'active bg-gradient-primary' : '' }}" href="{{ route('hosts.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-server" aria-hidden="true"></i>
                     </div>
