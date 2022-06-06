@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form method="post" action="{{ route('templates.store') }}">
+        <form method="post" action="{{ route('templates.store') }}"id="template-form">
             @csrf
 
             @if(isset($template->id))
@@ -20,20 +20,64 @@
             <div class="form-group row">
                 <label for="title" class="col-md-2 col-form-label">Title</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control border border-secondary" id="title" name="title" value="" placeholder="Your Title" required>
+                    <input type="text" class="form-control border border-secondary" id="title" name="title" value="{{ $template->title ?? '' }}" placeholder="Your Title" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="address1" class="col-md-2 col-form-label">Body</label>
                 <div class="col-md-10">
-                    <textarea class="form-control border border-secondary" name="body" id="body" cols="30" rows="10"></textarea>
+                    <textarea class="form-control border border-secondary" name="body" id="body" cols="30" rows="10" value="{{ $template->body ?? '' }}"placeholder="Your body" required></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-block btn-success">Submit</button>
+                <button type="button" id="submit-button" class="btn btn-block btn-success">Submit</button>
             </div>
         </form>
     </div>
 </div>
 @endsection
+
+
+@push('custom-scripts')
+<script>
+    $(document).ready(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z ]*$/.test(value);
+        }, 'อนุญาตให้ใส่เฉพาะตัวหนังสือ');
+
+        $('#admin-form').validate({
+            rules: {
+                Title: {
+                    required: true, // บังคับกรอก
+                },
+                Bodyl: {
+                    required: true, // บังคับกรอก
+                },
+            }
+        });
+
+        // ปุ่มยืนยัน
+        $('#submit-button').click(function() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to change this?", // ข้อความที่จะแสดง
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ยืนยัน' // ข้อความปุ่มยืนยัน
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if ($('#template-form').valid()) { // check ว่า form validaet แล้วหรือยัง
+                        //alert(1);
+                        $('#template-form').submit();
+                    }
+                }
+            })
+        });
+    });
+</script>
+@endpush
+
