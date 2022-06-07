@@ -70,7 +70,7 @@
         $('#submit-button').click(function() {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You want to change this?", // ข้อความที่จะแสดง
+                // text: "You want to change this?", // ข้อความที่จะแสดง
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
