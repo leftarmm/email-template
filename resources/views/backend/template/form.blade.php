@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form method="post" action="{{ route('templates.store') }}"id="template-form">
+        <form method="post" action="{{ route('templates.store') }}" id="template-form">
             @csrf
 
             @if(isset($template->id))
@@ -27,7 +27,7 @@
             <div class="form-group row">
                 <label for="address1" class="col-md-2 col-form-label">Body</label>
                 <div class="col-md-10">
-                    <textarea class="form-control border border-secondary" name="body" id="body" cols="30" rows="10" value="{{ $template->body ?? '' }}"placeholder="Your body" required></textarea>
+                    <textarea class="form-control border border-secondary summernote" name="body" id="body" cols="30" rows="10" value="{{ $template->body ?? '' }}" placeholder="Your body" required></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -42,6 +42,8 @@
 @push('custom-scripts')
 <script>
     $(document).ready(function() {
+
+        $('.summernote').summernote();
 
         jQuery.validator.addMethod("lettersonly", function(value, element) {
             return this.optional(element) || /^[a-zA-Z ]*$/.test(value);
@@ -80,4 +82,3 @@
     });
 </script>
 @endpush
-
