@@ -15,6 +15,7 @@ class Template extends Model
      */
     protected $fillable = [
         'reciever','status','detail'
+        
     ];
 }
 class Log extends Model
