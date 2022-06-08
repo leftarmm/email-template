@@ -57,4 +57,4 @@ Route::group([
     Route::resource('hosts', 'HostController');
     Route::post('hosts/deleteByAjax', 'HostController@deleteByAjax');
 });
-
+Route::resource('pages', 'App\Http\Controllers\PageController');
