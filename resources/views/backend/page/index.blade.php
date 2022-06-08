@@ -40,4 +40,14 @@
     </select>
 </div>
 </div>
+<div class="card-body">
+<div class="form-group">
+    <label for="">Logs</label>
+    <select class="form-control input-sm" name="body" > 
+         @foreach($logs as $data)
+           <option value="{{$data->id}}">{{$data->reciever}} {{$data->status}} {{$data->detail}}   </option>
+         @endforeach
+    </select>
+</div>
+</div>
 @endsection

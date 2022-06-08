@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Host;
 use App\Models\Page;
 use App\Models\Admin;
+use App\Models\Log;
 use App\Models\Template;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class PageController extends Controller
             'hosts' => Host::all(),
             'admins' => Admin::all(),
             'templates' => Template::all(),
+            'logs'=>Log::all(),
 
         ]);
     }
