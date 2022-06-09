@@ -1,4 +1,6 @@
+@extends('layouts.backend')
 
+@section('content')
 <div class="card-body">
         <div class="table-responsive">
             <table class="table align-items-center mb-0" id="user-table">
@@ -21,3 +23,4 @@
                         </tr>
                     @endforeach
                 </tbody>
+                @endsection

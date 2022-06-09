@@ -41,28 +41,34 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <label for="">Logs</label>
+                <label for="">List</label>
+                <div class="col-lg-11 col-5 my-auto text-end">
+                    <a class="btn btn-sm btn-info">Upload File</a>
+                </div>
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
+                            <th>Time</th>
+                            <th>Room</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Test Email</th>
                             <th>Reciever</th>
-                            <th>Status</th>
-                            <th>Detail</th>
+                            <th>Reciever 2</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($logs as $item)
-                            <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->reciever }}</td>
-                                <td>{{ $item->status }}</td>
-                                <td>{{ $item->detail }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
                 </table>
             </div>
         </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="">Log</label><br>
+                <div class="col-lg-11 col-5 my-auto text-end">
+                    <a style="background-color:yellow; color:black;" class="btn btn-sm btn-info">Send All</a>
+                </div>
+                <textarea id="w3review" name="w3review" rows="20" cols="185"></textarea>
+            </div>
+        </div>
     @endsection
-    
