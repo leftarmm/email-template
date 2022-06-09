@@ -5,14 +5,14 @@
         <div class="card-header pb-0">
             <div class="row">
                 <div class="col-lg-6 col-7">
-                    <h6>Page</h6>
+                    <h6>Send Emails</h6>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="form-group">
                 <label for="">Host</label>
-                <select class="form-control input-sm" name="host">
+                <select class="form-control border border-grey" name="host">
                     @foreach ($hosts as $data)
                         <option value="{{ $data->id }}">{{ $data->url }}</option>
                     @endforeach
@@ -22,7 +22,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="">User</label>
-                <select class="form-control input-sm" name="name">
+                <select class="form-control border border-grey" name="name">
                     @foreach ($admins as $data)
                         <option value="{{ $data->id }}">{{ $data->name }} </option>
                     @endforeach
@@ -32,9 +32,9 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="">Email Template</label>
-                <select class="form-control input-sm" name="body">
+                <select class="form-control border border-grey" name="body">
                     @foreach ($templates as $data)
-                        <option value="{{ $data->id }}">{{ $data->body }} </option>
+                        <option value="{{ $data->id }}">{{ $data->title }} </option>
                     @endforeach
                 </select>
             </div>

@@ -27,10 +27,10 @@
             <div class="form-group row">
                 <label for="address1" class="col-md-2 col-form-label">Body</label>
                 <div class="col-md-10">
-                    <textarea class="form-control border border-secondary summernote" name="body" id="body" cols="30" rows="10" value="{{ $template->body ?? '' }}" placeholder="Your body" required></textarea>
+                    <textarea class="form-control border border-secondary summernote" name="body" id="body" cols="30" rows="10" placeholder="Your body" required>{{ $template->body ?? '' }}</textarea>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <button type="button" id="submit-button" class="btn btn-block btn-success">Submit</button>
             </div>
         </form>

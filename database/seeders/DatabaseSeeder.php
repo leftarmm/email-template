@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
         $admin->remember_token = Str::random(10);
         $admin->save();
         \App\Models\User::factory(10)->create();
+
+        $this->call([
+            AdminSeeder::class,
+            HostSeeder::class,
+            TemplateSeeder::class,
+        ]);
     }
 }

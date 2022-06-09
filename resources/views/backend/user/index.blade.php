@@ -32,7 +32,7 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Updated</th>
-                        <th>Actions</th>
+                        <!-- <th>Actions</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                             @endforeach
                         </td>
                         <td>{{ $item->updated_at }}</td>
-                        <td>Edit Delete</td>
+                        <!-- <td>Edit Delete</td> -->
                     </tr>
                     @endforeach
                 </tbody>

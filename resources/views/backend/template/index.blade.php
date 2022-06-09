@@ -15,11 +15,11 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table align-items-center mb-0" id="user-table">
+            <table class="table mb-0" id="user-table">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Body</th>
+                        <th width="40%">Title</th>
+                        <th width="40%">Body</th>
                         <th>Actions</th>
                     </tr>
                     </tr>
@@ -27,8 +27,8 @@
                 <tbody>
                     @foreach($templates as $item)
                     <tr>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->body }}</td>
+                        <td style="white-space:inherit;">{{ $item->title }}</td>
+                        <td style="white-space:inherit;"><?php echo $item->body; ?></td>
                         <td>
                             <a class="btn btn-sm btn-warning" href="{{ route('templates.edit', ['template' => $item]) }}">
                                 Edit

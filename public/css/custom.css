@@ -1,0 +1,7 @@
+.form-control {
+    padding-left: 10px !important;
+}
+
+.error {
+    color: red;
+}

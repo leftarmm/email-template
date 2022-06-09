@@ -38,7 +38,7 @@
                             value="{{ $host->port ?? '' }}" placeholder="Enter Port">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <button type="button" id="submit-button" class="btn btn-block btn-success">Submit</button>
                 </div>
             </form>

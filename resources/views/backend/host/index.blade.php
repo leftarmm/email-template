@@ -5,7 +5,7 @@
     <div class="card-header pb-0">
         <div class="row">
             <div class="col-lg-6 col-7">
-                <h6>Host</h6>
+                <h6>Hosts</h6>
             </div>
             <div class="col-lg-6 col-5 my-auto text-end">
                 <a href="{{ route('hosts.create') }}" class="btn btn-sm btn-info">Add</a>
@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Url</th>
+                        <th>Port</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->url }}</td>
+                        <td>{{ $item->port }}</td>
                         <td>
                             <a class="btn btn-sm btn-warning" href="{{ route('hosts.edit', ['host' => $item ]) }}">
                                 Edit

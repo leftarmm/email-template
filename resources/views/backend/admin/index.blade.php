@@ -29,6 +29,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
+                        <td>{{ "*****" . substr(decrypt($item->password), 5) }}</td>
                         <td>
                             <a class="btn btn-sm btn-warning" href="{{ route('admins.edit', ['admin' => $item ]) }}">
                                 Edit
