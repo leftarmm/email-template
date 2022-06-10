@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Log;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class LogController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class LogController extends Controller
      */
     public function index()
     {
-        return view('log', [
+        return view('backend.log.log', [
             'logs' => Log::all()
         ]);
     }
