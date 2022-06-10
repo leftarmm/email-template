@@ -47,7 +47,7 @@
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             @yield('content')
-            @include('backend.partials.footer')
+            {{--@include('backend.partials.footer')--}}
         </div>
     </main>
     <!--   Core JS Files   -->

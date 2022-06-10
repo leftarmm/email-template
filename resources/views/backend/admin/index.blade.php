@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>action</th>
                     </tr>
                 </thead>

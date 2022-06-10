@@ -56,6 +56,8 @@ Route::group([
     Route::post('templates/deleteByAjax', 'TemplateController@deleteByAjax');
     Route::resource('hosts', 'HostController');
     Route::post('hosts/deleteByAjax', 'HostController@deleteByAjax');
+
 });
+Route::post('email/send', 'App\Http\Controllers\PageController@email');
 Route::resource('pages', 'App\Http\Controllers\PageController');
 Route::resource('logs', 'App\Http\Controllers\LogController');

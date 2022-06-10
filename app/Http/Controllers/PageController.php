@@ -8,6 +8,8 @@ use App\Models\Admin;
 use App\Models\Log;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use PHPMailer\PHPMailer\PHPMailer;  
+use PHPMailer\PHPMailer\Exception; 
 
 class PageController extends Controller
 {
@@ -22,9 +24,61 @@ class PageController extends Controller
             'hosts' => Host::all(),
             'admins' => Admin::all(),
             'templates' => Template::all(),
-            'logs'=>Log::all(),
+            'logs' => Log::all(),
 
         ]);
+    }
+
+    public function email(Request $request)
+    {
+        $mail = new PHPMailer(true);
+        $mail->CharSet = "utf-8";
+        $mail->SMTPDebug = 0;
+
+        try {                
+            $mail->isSMTP();
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            $mail->Host = $request->host; //888888//
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $request->sender_email; //888888//
+            $mail->Password   = $password[$request->sender_email]; //888888// decrypt()
+
+
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            //Recipients
+            $mail->setFrom($request->sender_email); //888888//
+            $mail->addAddress($request->reciever); 
+
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = $request->email_title; //888888//
+            $header = '<html><head><link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet"><style>font-family: "Sarabun", sans-serif;</style></head><body>';
+            $footer = '</body></html>';
+            $body = $request->email_body; //888888//
+
+            foreach ($request->all() as $key => $value) {
+                $body = str_replace('#' . $key . '#', $value, $body);
+            }
+            
+            $mail->msgHTML($header . $body . $footer);
+
+            $mail->send();
+            $message =  $request->code . ' - Message has been sent<br/>';
+        } catch (Exception $e) {
+            $message =  $request->code . " - Message could not be sent. Mailer Error: {$mail->ErrorInfo}<br/>";
+            //echo $request->code . " - Message could not be sent.<br/>";
+        }
+        return response()->json($message);
     }
 
     /**
@@ -56,7 +110,7 @@ class PageController extends Controller
      */
     public function show(Request $request)
     {
-       //
+        //
     }
 
     /**
