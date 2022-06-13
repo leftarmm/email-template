@@ -80,9 +80,21 @@ class PageController extends Controller
 
             $mail->send();
             $message =  $request->code . ' - Message has been sent<br/>';
+            $log = new Log();
+            $log->user_id = auth()->user()->id;
+            $log->reciever = $request->reciever;
+            $log->status = strictBool(1);
+            $log->detail = $message;
+            $log->save();
         } catch (Exception $e) {
             $message =  $request->code . " - Message could not be sent. Mailer Error: {$mail->ErrorInfo}<br/>";
             //echo $request->code . " - Message could not be sent.<br/>";
+            $log = new Log();
+            $log->user_id = auth()->user()->id;
+            $log->reciever = $request->reciever;
+            $log->status = '0';
+            $log->detail = $message;
+            $log->save();
         }
         return response()->json($message);
     }
