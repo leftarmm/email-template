@@ -73,7 +73,7 @@
             <div class="col-lg-11 col-5 my-auto text-end">
                 <a style="background-color:yellow; color:black;" class="btn btn-sm btn-info" id="send-email">Send All</a>
             </div>
-            <textarea class="form-control border boder-primary" rows="10" id="txtContent"></textarea>
+            <textarea class="form-control border boder-primary" rows="10" id="email-logs" disabled></textarea>
             <p id="message"></p>
         </div>
     </div>
@@ -146,17 +146,17 @@
                                 type: "post",
                                 data: data,
                                 success: function(result) {
-                                    console.log(result);
-                                    // $('#email-logs').append(result + '\n');
-                                    // count++;
-                                    // $('#logs-count').html(count);
-                                    // if (count < importExcelData.length) {
-                                    //     setTimeout(function() {
-                                    //         myLoop(count);
-                                    //     }, 3000);
-                                    // } else {
-                                    //     $('#email-logs').append("Finish..\n");
-                                    // }
+                                    //console.log(result);
+                                    $('#email-logs').append(result + '\n');
+                                    count++;
+                                    $('#logs-count').html(count);
+                                    if (count < importExcelData.length) {
+                                        setTimeout(function() {
+                                            myLoop(count);
+                                        }, 3000);
+                                    } else {
+                                        $('#email-logs').append("Finish..\n");
+                                    }
                                 }
                             });
                         }
