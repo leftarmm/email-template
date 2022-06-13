@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table align-items-center mb-0" >
+                <table class="table align-items-center mb-0" id="log-table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -36,3 +36,10 @@
         </div>
     </div>
 @endsection
+@push('custom-scripts')
+<script>
+    $(document).ready(function() {
+        $('#log-table').DataTable();
+    })
+    </script>
+    @endpush
