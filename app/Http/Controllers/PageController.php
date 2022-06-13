@@ -83,7 +83,7 @@ class PageController extends Controller
             $log = new Log();
             $log->user_id = auth()->user()->id;
             $log->reciever = $request->reciever;
-            $log->status = strictBool(1);
+            $log->status = '1';
             $log->detail = $message;
             $log->save();
         } catch (Exception $e) {
