@@ -8,8 +8,8 @@ use App\Models\Admin;
 use App\Models\Log;
 use App\Models\Template;
 use Illuminate\Http\Request;
-use PHPMailer\PHPMailer\PHPMailer;  
-use PHPMailer\PHPMailer\Exception; 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class PageController extends Controller
 {
@@ -31,11 +31,17 @@ class PageController extends Controller
 
     public function email(Request $request)
     {
+        //return response()->json(1);
+        //return response()->json($request->all());
+        $host = Host::find($request->host);
+        $admin = Admin::find($request->admin);
+        $template = Template::find($request->template);
+
         $mail = new PHPMailer(true);
         $mail->CharSet = "utf-8";
         $mail->SMTPDebug = 0;
 
-        try {                
+        try {
             $mail->isSMTP();
             $mail->SMTPOptions = array(
                 'ssl' => array(
@@ -44,32 +50,32 @@ class PageController extends Controller
                     'allow_self_signed' => true
                 )
             );
-            $mail->Host = $request->host; //888888//
+            $mail->Host =  $host->url; //888888//
             $mail->SMTPAuth   = true;
-            $mail->Username   = $request->sender_email; //888888//
-            $mail->Password   = $password[$request->sender_email]; //888888// decrypt()
+            $mail->Username   = $admin->email; //888888//
+            $mail->Password   = decrypt($admin->password); //888888// decrypt()
 
 
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
             //Recipients
-            $mail->setFrom($request->sender_email); //888888//
-            $mail->addAddress($request->reciever); 
+            $mail->setFrom($admin->email); //888888//
+            $mail->addAddress($request->reciever);
 
 
             // Content
             $mail->isHTML(true);
-            $mail->Subject = $request->email_title; //888888//
+            $mail->Subject = $template->title; //888888//
             $header = '<html><head><link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet"><style>font-family: "Sarabun", sans-serif;</style></head><body>';
             $footer = '</body></html>';
-            $body = $request->email_body; //888888//
+            $body = $template->body; //888888//
 
             foreach ($request->all() as $key => $value) {
                 $body = str_replace('#' . $key . '#', $value, $body);
             }
-            
+
             $mail->msgHTML($header . $body . $footer);
 
             $mail->send();

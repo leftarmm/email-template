@@ -34,10 +34,10 @@
             <label for="">Email Template</label>
             <select class="form-control border border-grey" name="body" id="select-template">
                 @foreach ($templates as $data)
-                <option value="{{ $data->id }}">{{ $data->title }} </option>
+                <option value="{{ $data->id }}">{{ $data->title }}</option>
                 @endforeach
             </select>
-            <p id="preview"></p>
+            <p id="preview123"></p>
         </div>
     </div>
     <div class="card-body">
@@ -82,15 +82,15 @@
 
 @push('custom-scripts')
 <script>
-    var t = @JSON($templates);
 
     $(document).ready(function() {
+        var t = @JSON($templates);
         $('.datatable').DataTable();
         var did = $('#select-template :selected').val();
 
         $.each(t, function(key, val) {
             if (val.id == did) {
-                $('#preview').html(val.body);
+                $('#preview123').html(val.body);
             }
         });
 
@@ -100,11 +100,10 @@
         });
 
         $('#select-template').on('change', function() {
-            var id = this.value;
-
+            var id = $(this).val();
             $.each(t, function(key, val) {
                 if (val.id == id) {
-                    $('#preview').html(val.body);
+                    $('#preview123').html(val.body);
                 }
             });
         });
@@ -147,7 +146,7 @@
                                 type: "post",
                                 data: data,
                                 success: function(result) {
-                                    console.log(data);
+                                    console.log(result);
                                     // $('#email-logs').append(result + '\n');
                                     // count++;
                                     // $('#logs-count').html(count);
