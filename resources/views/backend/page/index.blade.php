@@ -11,6 +11,16 @@
     </div>
     <div class="card-body">
         <div class="form-group">
+            <label for="">University</label>
+            <select class="form-control border border-grey" name="name" id="select-university">
+                @foreach ($universitys as $data)
+                <option value="{{ $data->id }}">{{ $data->name }} </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
             <label for="">Host</label>
             <select class="form-control border border-grey" name="host" id="select-host">
                 @foreach ($hosts as $data)
@@ -54,6 +64,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>university_id</th>
                         <th>Time</th>
                         <th>Room</th>
                         <th>Code</th>
@@ -130,6 +141,7 @@
                                 reciever = importExcelData[i][7]
                             };
                             data._token = '{{ Session::token() }}';
+                            data.university = $('#select-university').val();
                             data.host = $('#select-host').val();
                             data.admin = $('#select-admin').val();
                             data.template = $('#select-template').val();

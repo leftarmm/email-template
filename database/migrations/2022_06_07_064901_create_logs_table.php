@@ -18,6 +18,7 @@ class CreateLogsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('reciever')->nullable();
+            $table->string('relation')->nullable();
             $table->boolean('status ')->nullable();
             $table->longtext('detail')->nullable();
             $table->timestamps();

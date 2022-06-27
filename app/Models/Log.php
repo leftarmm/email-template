@@ -14,7 +14,7 @@ class Logs extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'reciever','status','detail'
+        'reciever','relation','status','detail'
         
     ];
 }

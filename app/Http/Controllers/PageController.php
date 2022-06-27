@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Admin;
 use App\Models\Log;
 use App\Models\Template;
+use App\Models\University;
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -25,6 +26,7 @@ class PageController extends Controller
             'admins' => Admin::all(),
             'templates' => Template::all(),
             'logs' => Log::all(),
+            'universitys' => University::all(),
 
         ]);
     }
@@ -36,6 +38,7 @@ class PageController extends Controller
         $host = Host::find($request->host);
         $admin = Admin::find($request->admin);
         $template = Template::find($request->template);
+        $university = University::find($request->university);
 
         $mail = new PHPMailer(true);
         $mail->CharSet = "utf-8";
@@ -54,7 +57,7 @@ class PageController extends Controller
             $mail->SMTPAuth   = true;
             $mail->Username   = $admin->email; //888888//
             $mail->Password   = decrypt($admin->password); //888888// decrypt()
-
+            $mail->University   = $university->name;
 
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
@@ -83,6 +86,7 @@ class PageController extends Controller
             $log = new Log();
             $log->user_id = auth()->user()->id;
             $log->reciever = $request->reciever;
+            $log->relation = $university->id;
             $log->status = '1';
             $log->detail = $message;
             $log->save();
@@ -91,6 +95,7 @@ class PageController extends Controller
             //echo $request->code . " - Message could not be sent.<br/>";
             $log = new Log();
             $log->user_id = auth()->user()->id;
+            $log->relation = $university->id;
             $log->reciever = $request->reciever;
             $log->status = '0';
             $log->detail = $message;

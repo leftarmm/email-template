@@ -17,6 +17,8 @@
                         <tr>
                             <th>ID</th>
                             <th>reciever</th>
+                            <th>university_ID</th>
+                            <th>relation</th>
                             <th>status</th>
                             <th>detail</th>
                         </tr>
@@ -26,6 +28,7 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->reciever }}</td>
+                                <td>{{ $item->relation }}</td>
                                 <td>{{ $item->status }}</td>
                                 <td>{{ $item->detail }}</td>
                             </tr>
