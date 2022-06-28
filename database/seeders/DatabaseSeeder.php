@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         $admin->password = bcrypt('Lannacom@1');
         $admin->remember_token = Str::random(10);
         $admin->save();
-        \App\Models\User::factory(10)->create();
 
         $this->call([
             AdminSeeder::class,
+            UniversitySeeder::class,
             HostSeeder::class,
             TemplateSeeder::class,
         ]);
