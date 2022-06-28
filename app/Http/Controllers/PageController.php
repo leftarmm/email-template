@@ -87,6 +87,7 @@ class PageController extends Controller
             $log->user_id = auth()->user()->id;
             $log->reciever = $request->reciever;
             $log->relation = $university->id;
+            //$log->relation = $university->id;
             $log->status = '1';
             $log->detail = $message;
             $log->save();
@@ -95,8 +96,9 @@ class PageController extends Controller
             //echo $request->code . " - Message could not be sent.<br/>";
             $log = new Log();
             $log->user_id = auth()->user()->id;
-            $log->relation = $university->id;
             $log->reciever = $request->reciever;
+            $log->relation = $university->id;
+            //$log->relation = 
             $log->status = '0';
             $log->detail = $message;
             $log->save();

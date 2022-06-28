@@ -17,7 +17,6 @@
                         <tr>
                             <th>ID</th>
                             <th>reciever</th>
-                            <th>university_ID</th>
                             <th>relation</th>
                             <th>status</th>
                             <th>detail</th>

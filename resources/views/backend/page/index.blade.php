@@ -64,7 +64,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>university_id</th>
+                        {{-- <th>university_id</th> --}}
                         <th>Time</th>
                         <th>Room</th>
                         <th>Code</th>
