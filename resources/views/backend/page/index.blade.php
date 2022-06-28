@@ -47,45 +47,49 @@
                 <option value="{{ $data->id }}">{{ $data->title }}</option>
                 @endforeach
             </select>
-            <p id="preview123"></p>
+            <p id="preview-email" class="p-3"></p>
         </div>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <label for="">List</label>
-            <div class="col-lg-11 col-5 my-auto text-end">
+        <div class="row">
+            <div class="col-md-2">List</div>
+            <div class="col-md-10 text-end">
                 <input type="file" id="excelfile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
 
                 <button type="button" class="btn btn-sm btn-info" id="viewfile" value="Export To Table">
                     Upload File
                 </button>
             </div>
-            <table class="table align-items-center mb-0 datatable" id="exceltable">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        {{-- <th>university_id</th> --}}
-                        <th>Time</th>
-                        <th>Room</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Test Email</th>
-                        <th>Reciever</th>
-                        <th>Reciever 2</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="col-md-12 mt-2">
+                <table class="table align-items-center mb-0 datatable" id="exceltable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            {{-- <th>university_id</th> --}}
+                            <th>Time</th>
+                            <th>Room</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Test Email</th>
+                            <th>Reciever</th>
+                            <th>Reciever 2</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
     <div class="card-body">
-        <div class="form-group">
-            <label for="">Log</label><br>
-            <div class="col-lg-11 col-5 my-auto text-end">
+        <div class="row">
+            <div class="col-md-2">Log</div>
+            <div class="col-md-10 text-end">
                 <a style="background-color:yellow; color:black;" class="btn btn-sm btn-info" id="send-email">Send All</a>
             </div>
-            <textarea class="form-control border boder-primary" rows="10" id="email-logs" disabled></textarea>
-            <p id="message"></p>
+            <div class="col-md-12">
+                <textarea class="form-control border boder-primary" rows="10" id="email-logs" disabled></textarea>
+                <p id="message"></p>
+            </div>
         </div>
     </div>
 </div>
@@ -93,7 +97,6 @@
 
 @push('custom-scripts')
 <script>
-
     $(document).ready(function() {
         var t = @JSON($templates);
         $('.datatable').DataTable();
@@ -101,7 +104,7 @@
 
         $.each(t, function(key, val) {
             if (val.id == did) {
-                $('#preview123').html(val.body);
+                $('#preview-email').html(val.body);
             }
         });
 
@@ -114,7 +117,7 @@
             var id = $(this).val();
             $.each(t, function(key, val) {
                 if (val.id == id) {
-                    $('#preview123').html(val.body);
+                    $('#preview-email').html(val.body);
                 }
             });
         });
